@@ -1,6 +1,6 @@
 # RecGPT: Generative  Pre-training  for  Text-based  Recommendation
 
-We present the first domain-adapted and fully-trained large language model,  RecGPT-7B, and its instruction-following variant, RecGPT-7B-Instruct, for  text-based  recommendation. Experimental results on rating prediction and  sequential recommendation tasks show that our model, RecGPT-7B-Instruct,  outperforms previous strong baselines. The general architecture and experimental results of RecGPT can be found in our [paper](arxivlink):
+We present the first domain-adapted and fully-trained large language model,  RecGPT-7B, and its instruction-following variant, RecGPT-7B-Instruct, for  text-based  recommendation. Experimental results on rating prediction and  sequential recommendation tasks show that our model, RecGPT-7B-Instruct,  outperforms previous strong baselines. The general architecture and experimental results of RecGPT can be found in our [paper](http://arxiv.org/abs/2405.12715):
 
 ```
 @inproceedings{RecGPT,
