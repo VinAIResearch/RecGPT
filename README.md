@@ -33,7 +33,7 @@ Other fine-tuning options may include the use of [transformers](https://github.c
 ## License
 
 ```
-Copyright (c) 2024 VinAI Research
+Copyright (c) 2024 VinAI
 
 Licensed under the Creative Commons Attribution Non Commercial 4.0 International.
 You may obtain a copy of the License at
