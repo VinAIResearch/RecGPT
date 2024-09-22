@@ -3,8 +3,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 model_path = "vinai/RecGPT-7B-Instruct"
 
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(model_path)
-model.to("cuda")
+model = AutoModelForCausalLM.from_pretrained(model_path, device_map='auto')
 
 prompts = [
     "### Instruction:\nPredict the next item.\nGiven the interaction history of a user with food recipes as follows:\n\nTitle: white cheddar potato gratin\nTitle: possum s cream cheese chocolate chip bread\nTitle: zucchini lasagna lasagne low carb\nTitle: sweet potato and apple casserole\n\n### Response:",
@@ -12,14 +11,13 @@ prompts = [
 ]
 
 for prompt in prompts:
-    input_ids = tokenizer(prompt, add_special_tokens=True, return_tensors="pt")["input_ids"].to("cuda")
+    input_ids = tokenizer(prompt, add_special_tokens=True, return_tensors="pt")["input_ids"].to(model.device)
     output_ids = model.generate(
         input_ids,
         max_new_tokens=128,
         eos_token_id=tokenizer.eos_token_id,
         pad_token_id=tokenizer.pad_token_id,
     )
-    response = tokenizer.batch_decode(
-        output_ids[:, input_ids.size(1):], skip_special_tokens=True
-    )[0].strip()
+    response = tokenizer.batch_decode(output_ids[:, input_ids.size(1) :], skip_special_tokens=True)[0].strip()
     print(response)
+
